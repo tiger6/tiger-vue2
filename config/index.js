@@ -22,17 +22,17 @@ module.exports = {
     bundleAnalyzerReport: process.env.npm_config_report
   },
   dev: {
-    env: require('./dev.env'),
-    port: 8000,
-    autoOpenBrowser: false,
-    assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
-    proxyTable: {},
+    env: require('./dev.env'),    //引用测试环境配置
+    port: 8000,                   //端口号
+    autoOpenBrowser: false,       //是否打开浏览器
+    assetsSubDirectory: 'static', //静态资源引用目录
+    assetsPublicPath: '/',        //静态资源引用路径设置
+    proxyTable: {},               //代理设置，很好的解决了跨域问题
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
-    cssSourceMap: false
+    cssSourceMap: false       //是否生成css sourceMap文件
   }
 }
