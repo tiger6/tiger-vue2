@@ -1,10 +1,10 @@
 <template lang="html">  <!-- 默认为html模版 -->
   <div class="head-box">  <!-- 组件模板必须包括一个共同的根元素，因此定义了一个根元素div -->
-      <div class="overlay" :class="{fixed:isFixed}">
+      <div class="overlay" :class="{fixed:scrolled}">
           <div class="slider-trigger icon iconfont icon-other"></div>
           <h1 class="header-author js-mobile-header"><a href="/">{{hMsg}}的主页</a></h1>
       </div>
-      <div class="img-box" :style="headFixed" @click="handleImg">
+      <div class="img-box" :style="headFixed">
         <img src="/static/logo.jpg" alt="logo">
       </div>
     <h1 class="header-author"><a href="/">{{ msg }}</a></h1><!-- 这里是展示数据的  -->
@@ -29,6 +29,7 @@ export default {
   data(){   //data必须是一个函数
     return{
       isFixed:false,
+      scrolled:false,
       menuList:[
         {url:"/",tit:"主页"},
         {url:"/archives/",tit:"归档"},
@@ -46,12 +47,21 @@ export default {
   methods:{
     handleImg(){
       this.isFixed=!this.isFixed;
+    },
+    onScroll(){
+      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      this.scrolled=scrollTop>105;
     }
   },
   computed:{
     headFixed(){
       return this.isFixed?'paddingTop:50px':'';
     }
+  },
+  mounted(){
+    this.$nextTick(()=>{
+      window.addEventListener("scroll",this.onScroll)
+    })
   },
   props:{
     msg:{

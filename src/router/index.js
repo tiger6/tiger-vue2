@@ -1,10 +1,10 @@
 import Vue from 'vue'  /* 引用vue文件 */
 import Router from 'vue-router' /* 引用vue路由模块，并赋值给变量Router */
 import Home from '@/views/Home' /* 英文Home.vue模版，并赋值给变量Home,这里是“@”相当于“../” */
-import Archives from '@/views/archives'
-import Tags from '@/views/tags'
-import Page404 from '@/views/404'
-import ComDetail from '@/views/comDetail'
+import Archives from '@/views/archives'  /*加载归档页面*/
+import Tags from '@/views/tags'   /*加载标签页面*/
+import Page404 from '@/views/404'  /*加载404页面*/
+import ComDetail from '@/views/comDetail'  /*加载内容详情页面*/
 
 Vue.use(Router)  /* 使用路由 */
 
@@ -36,7 +36,7 @@ export default new Router({
       component: ComDetail /* 注册Home组件 */
     },
     {
-      path: "*",
+      path: "*",/* 匹配不到路径加载404组件 */
       redirect: '/404'
     }
   ]

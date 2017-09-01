@@ -1,6 +1,6 @@
 <template>
   <div class="page-404">
-    <p>页面已经不在地球了！！！</p>
+    <p>页面已经离开地球！！！</p>
   </div>
 </template>
 <script>
